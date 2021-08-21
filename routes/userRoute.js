@@ -2,12 +2,20 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/userModel');
 
-router.post('/register' , (req,res) =>{
+router.post('/register' , async (req,res) =>{
     const { username , password} = req.body;
 
-    const newUser = new User({username,password});
+   
 
     try {
+        const existingUser = await User.findOne({ username });
+
+        if (existingUser)
+          return res.status(400).json({
+            errorMessage: "An account with this username already exists.",
+          });
+        const newUser = new User({username,password});
+
         newUser.save();
         res.send('User Registered Successfully')
     } catch (error) {
