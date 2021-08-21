@@ -34,16 +34,22 @@ router.post('/newenquiry', async (req, res) => {
     }
 });
 
-// router.post('/getpizzabyid', async ( req, res) => {
+router.post('/getenquirybypin', async ( req, res) => {
 
-//     const pizzaid = req.body.pizzaid;
-//     try {
-//         const pizza =await Pizza.findOne({_id : pizzaid})
-//         res.send(pizza)
-//     } catch (error) {
-//         return res.status(400).json({ message: error });
-//     }
-// })
+    const {pincodes} = req.body;
+    console.log(pincodes);
+    try {
+        // const enquires = await pincodes.map(pincode => {
+        //      const enquiry =  Enquiry.find({pincode : pincode})
+        //      return enquiry;
+        //     })
+        const enquires =await Enquiry.find({pincode : pincodes})
+        console.log(enquires)
+        res.send(enquires)
+    } catch (error) {
+        return res.status(400).json({ message: error });
+    }
+})
 
 // router.put('/editpizza', async ( req, res) => {
 
