@@ -1,7 +1,7 @@
 const express = require("express");
 const db= require('./db');
 // const Pizza = require('./models/pizzaModel')
-// const pizzaRoutes = require('./routes/pizzasRoute');
+const branchRoutes = require('./routes/branchRoute');
 const userRoutes = require('./routes/userRoute')
 // const orderRoutes = require('./routes/ordersRoute');
 // const path = require('path')
@@ -9,7 +9,7 @@ const userRoutes = require('./routes/userRoute')
 const app = express();
 app.use(express.json());
 
-// app.use('/api/pizzas',pizzaRoutes);
+app.use('/api/branches',branchRoutes);
 app.use('/api/users',userRoutes);
 // app.use('/api/orders',orderRoutes);
 
