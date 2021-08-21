@@ -3,7 +3,7 @@ const db= require('./db');
 // const Pizza = require('./models/pizzaModel')
 const branchRoutes = require('./routes/branchRoute');
 const userRoutes = require('./routes/userRoute')
-// const orderRoutes = require('./routes/ordersRoute');
+const EnquiryRoutes = require('./routes/enquiryRoute');
 // const path = require('path')
 
 const app = express();
@@ -11,7 +11,7 @@ app.use(express.json());
 
 app.use('/api/branches',branchRoutes);
 app.use('/api/users',userRoutes);
-// app.use('/api/orders',orderRoutes);
+app.use('/api/enquiries',EnquiryRoutes);
 
 // if(process.env.NODE_ENV === 'production'){
 //     app.use('/',express.static('client/build'))
