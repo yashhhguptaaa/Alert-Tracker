@@ -3,7 +3,7 @@ const userSchema = mongoose.Schema({
     username : {type : String , require},
     password : {type : String , require},
     isAdmin : {type: Boolean, require, default : false},
-    branchIncharge : {type: Boolean, require, default : false}
+    isBranchIncharge : {type: Boolean, require, default : false}
 } ,{
     timestamps:true    ,
 });
