@@ -11,6 +11,18 @@ router.get('/getAllBranches', async (req, res) => {
     }
 });
 
+router.post('/getBranchesByPincode', async ( req, res) => {
+
+    const pincode = req.body.pincode;
+    
+    try {
+        const branches =await Branch.find({pincodeCovered : pincode})
+        res.send(branches)
+    } catch (error) {
+        return res.status(400).json({ message: error });
+    }
+})
+
 // router.post('/addpizza', async (req, res) => {
 
 //     const pizza = req.body.pizza;
