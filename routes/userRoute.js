@@ -32,10 +32,10 @@ router.post('/login' , async (req,res) => {
         if(user.length > 0 ){
             
            const currentUser = {
-               name : user[0].name,
-               email : user[0].email,
+               username : user[0].username,
                isAdmin : user[0].isAdmin,
                isBranchIncharge : user[0].isBranchIncharge,
+               pincode : user[0].pincode,
                _id : user[0]._id
            }
            res.send(currentUser);

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Error from '../components/Error';
+
 // import pizzas from '../pizzasdata';
 
 
@@ -12,8 +14,8 @@ export default function Homescreen() {
 
 
     // const dispatch = useDispatch();
-    // const pizzasstate = useSelector(state => state.getAllPizzasReducer);
-    // const { pizzas, loading, error } = pizzasstate;
+    const registerstate = useSelector(state => state.registerUserReducer);
+    const {loading , success ,error} = registerstate;
     // useEffect(() => {
     //     dispatch(getAllPizzas())
     // }, [])
@@ -28,8 +30,8 @@ export default function Homescreen() {
 
                     <h2 className="text-center" style={{ fontSize: '35px' }}>Contact Details</h2>
                     {/* {loading && <Loading />}
-                    {success && <Success success="User Login Successfully" />}
-                    {error && <Error error='Invalid Credientals' />} */}
+                    {success && <Success success="User Login Successfully" /> */}
+                    {error && <Error error='Invalid Credientals' />} 
                     <div>
                         <input required type="text" placeholder="email" className="form-control" value={email} onChange={(e) => { setEmail(e.target.value) }} />
                         <input required type="text" placeholder="address" className="form-control" value={address} onChange={(e) => { setAddress(e.target.value) }} />
