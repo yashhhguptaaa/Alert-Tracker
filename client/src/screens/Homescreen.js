@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Error from '../components/Error';
+// import Error from '../components/Error';
 
 // import pizzas from '../pizzasdata';
 
@@ -14,11 +14,26 @@ export default function Homescreen() {
 
 
     // const dispatch = useDispatch();
-    const registerstate = useSelector(state => state.registerUserReducer);
-    const {loading , success ,error} = registerstate;
+   
     // useEffect(() => {
     //     dispatch(getAllPizzas())
     // }, [])
+
+    const userstate = useSelector(state => state.loginUserReducer);
+    const { currentUser } = userstate;
+
+    function specBranches (){
+
+        const enquiry = {
+            email,
+            phone,
+            address,
+            pincode,
+            currentUser
+        }
+        console.log(specBranches);
+        
+    }
 
     return (
         <div class="home">
@@ -31,14 +46,14 @@ export default function Homescreen() {
                     <h2 className="text-center" style={{ fontSize: '35px' }}>Contact Details</h2>
                     {/* {loading && <Loading />}
                     {success && <Success success="User Login Successfully" /> */}
-                    {error && <Error error='Invalid Credientals' />} 
+                    {/* {error && <Error error='Invalid Credientals' />}  */}
                     <div>
                         <input required type="text" placeholder="email" className="form-control" value={email} onChange={(e) => { setEmail(e.target.value) }} />
                         <input required type="text" placeholder="address" className="form-control" value={address} onChange={(e) => { setAddress(e.target.value) }} />
-                        <input required type="text" placeholder="phone" className="form-control" value={address} onChange={(e) => { setPhone(e.target.value) }} />
-                        <input required type="text" placeholder="pincode" className="form-control" value={address} onChange={(e) => { setPincode(e.target.value) }} />
+                        <input required type="text" placeholder="phone" className="form-control" value={phone} onChange={(e) => { setPhone(e.target.value) }} />
+                        <input required type="text" placeholder="pincode" className="form-control" value={pincode} onChange={(e) => { setPincode(e.target.value) }} />
 
-                        <button className="btn mt-3 mb-3" >Bettle Nuts</button>
+                        <button className="btn mt-3 mb-3" onClick ={specBranches} >Bettle Nuts</button>
                     </div>
                 </div>
             </div>
