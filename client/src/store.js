@@ -5,8 +5,10 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 // import { getAllPizzasReducer, addPizzaReducer, getPizzaByIdReducer, editPizzaReducer } from './reducers/pizzaReducers';
 // import { cartReducer } from './reducers/cartReducer';
 import { registerUserReducer , loginUserReducer} from './reducers/userReducer';
-import { newEnquiryReducer } from './reducers/enquiryReducer';
+import { getEnquiriesByPincodeReducer, getEnquiryToAdminReducer, newEnquiryReducer } from './reducers/enquiryReducer';
 import { getBranchesByPincodeReducer } from './reducers/branchReducer';
+
+
 // import { placeOrderReducer, getUserOrdersReducer , getAllOrdersReducer} from './reducers/orderReducer';
 
 
@@ -16,7 +18,9 @@ const finalReducer = combineReducers({
     registerUserReducer: registerUserReducer,
     loginUserReducer: loginUserReducer,
     newEnquiryReducer: newEnquiryReducer,
-    getBranchesByPincodeReducer: getBranchesByPincodeReducer
+    getBranchesByPincodeReducer: getBranchesByPincodeReducer,
+    getEnquiriesByPincodeReducer : getEnquiriesByPincodeReducer,
+    getEnquiryToAdminReducer : getEnquiryToAdminReducer
     // placeOrderReducer: placeOrderReducer,
     // getUserOrdersReducer: getUserOrdersReducer,
     // addPizzaReducer: addPizzaReducer,
