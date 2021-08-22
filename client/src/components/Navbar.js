@@ -1,13 +1,13 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { logoutUser } from '../actions/userActions';
+import { logoutUser } from '../actions/userActions';
 
 export default function Navbar() {
 
     // const cartstate = useSelector(state => state.cartReducer);
     const userstate = useSelector(state => state.loginUserReducer);
     const { currentUser } = userstate;
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
 
     return (
         <div>
@@ -21,7 +21,7 @@ export default function Navbar() {
                                     {currentUser.username}
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item" href="#" >Logout</a></li>
+                                    <li><a class="dropdown-item" href="#" onClick={() => dispatch(logoutUser())} >Logout</a></li>
                                 </ul>
                             </div>)
                             :
