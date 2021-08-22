@@ -5,6 +5,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 // import { getAllPizzasReducer, addPizzaReducer, getPizzaByIdReducer, editPizzaReducer } from './reducers/pizzaReducers';
 // import { cartReducer } from './reducers/cartReducer';
 import { registerUserReducer , loginUserReducer} from './reducers/userReducer';
+import { newEnquiryReducer } from './reducers/enquiryReducer';
+import { getBranchesByPincodeReducer } from './reducers/branchReducer';
 // import { placeOrderReducer, getUserOrdersReducer , getAllOrdersReducer} from './reducers/orderReducer';
 
 
@@ -12,7 +14,9 @@ const finalReducer = combineReducers({
     // getAllPizzasReducer: getAllPizzasReducer,
     // cartReducer: cartReducer,
     registerUserReducer: registerUserReducer,
-    loginUserReducer: loginUserReducer
+    loginUserReducer: loginUserReducer,
+    newEnquiryReducer: newEnquiryReducer,
+    getBranchesByPincodeReducer: getBranchesByPincodeReducer
     // placeOrderReducer: placeOrderReducer,
     // getUserOrdersReducer: getUserOrdersReducer,
     // addPizzaReducer: addPizzaReducer,
@@ -25,6 +29,8 @@ const finalReducer = combineReducers({
 
 // const cartItems = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [];
 const currentUser = localStorage.getItem('currentUser') ? JSON.parse(localStorage.getItem('currentUser')) : null;
+const currentEnquiry = localStorage.getItem('currentEnquiry') ? JSON.parse(localStorage.getItem('currentEnquiry')) : null;
+
 
 const initialState = {
     // cartReducer: {
@@ -32,6 +38,10 @@ const initialState = {
     // },
     loginUserReducer: {
         currentUser: currentUser
+    }
+    ,
+    newEnquiryReducer:{
+        currentEnquiry : currentEnquiry
     }
 };
 const composeEnhancers = composeWithDevTools({});
