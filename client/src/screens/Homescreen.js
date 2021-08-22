@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { newEnquiry } from '../actions/enquiryActions';
+import Branchscreen from './Branchscreen';
+
 // import Error from '../components/Error';
 
 // import pizzas from '../pizzasdata';
@@ -13,7 +16,7 @@ export default function Homescreen() {
     const [pincode, setPincode] = useState('');
 
 
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
    
     // useEffect(() => {
     //     dispatch(getAllPizzas())
@@ -31,8 +34,11 @@ export default function Homescreen() {
             pincode,
             currentUser
         }
-        console.log(specBranches);
-        
+        console.log(enquiry);
+        dispatch(newEnquiry(enquiry));
+        // <Branchscreen pincode={pincode} />
+        // window.location.href = '/branches';
+
     }
 
     return (

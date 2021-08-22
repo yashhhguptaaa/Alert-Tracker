@@ -25,10 +25,9 @@ router.post('/newenquiry', async (req, res) => {
             pincode: pincode
 
         })
-        console.log(newenquiry);
 
         await newenquiry.save()
-        res.send('New Enquiry Added Successfully')
+        res.send(newenquiry);
     } catch (error) {
         return res.status(400).json({ message: error });
     }
