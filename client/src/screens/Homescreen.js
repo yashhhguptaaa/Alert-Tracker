@@ -27,6 +27,23 @@ export default function Homescreen() {
 
     function specBranches (){
 
+        if(currentUser === null) {
+            alert(`You have to login first`)
+            window.location.href = '/login';
+        }
+        else{
+            const enquiry = {
+                email,
+                phone,
+                address,
+                pincode,
+                currentUser
+            }
+            console.log(enquiry);
+            dispatch(newEnquiry(enquiry));
+
+        }
+
         const enquiry = {
             email,
             phone,
