@@ -1,18 +1,21 @@
 import axios from 'axios';
 
-export const newEnquiry = (enquiry) => async(dispatch) => {
+export const newEnquiry = (enquiry) => async(dispatch,getdata) => {
 
 
     dispatch({type : 'NEW_ENQUIRY_REQUEST'});
 
     try {
         const response = await axios.post('/api/enquiries/newenquiry',enquiry);
-        dispatch({type : 'NEW_ENQUIRY_SUCCESS'});
+        dispatch({type : 'NEW_ENQUIRY_SUCCESS',payload:response.data});
 
+        const currentEnquiry = getdata().newEnquiryReducer.currentEnquiry;
+        localStorage.setItem('currentEnquiry',JSON.stringify(currentEnquiry));
+        window.location.href='/branches';
         console.log(response);
 
     } catch (error) {
-        dispatch({type : 'NEW_ENQUIRY_FAILED'});
+        dispatch({type : 'NEW_ENQUIRY_FAILED',payload:error});
         console.log(error);
     }
 }
