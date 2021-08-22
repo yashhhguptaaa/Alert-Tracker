@@ -9,8 +9,9 @@ import {BrowserRouter , Route ,Link ,Switch} from 'react-router-dom';
 import Registerscreen from './screens/Registerscreen';
 import Loginscreen from './screens/Loginscreen';
 import Branchscreen from './screens/Branchscreen';
+import BInchargescreen from './screens/BInchargescreen';
 // import Ordersscreen from './screens/Ordersscreen';
-// import Adminscreen from './screens/Adminscreen';
+import Adminscreen from './screens/Adminscreen';
 
 function App() {
   return (
@@ -21,8 +22,10 @@ function App() {
         <Route path="/login" exact component={Loginscreen} />
         <Route path="/registration" exact component={Registerscreen} />
         <Route path="/branches" exact component={Branchscreen} />
+        <Route path="/bincharge" exact component={BInchargescreen} />
+        <Route path="/admin" exact component={BInchargescreen} />
 
-        
+
       </BrowserRouter>
     </div>
   );
