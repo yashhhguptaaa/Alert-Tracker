@@ -14,9 +14,27 @@ router.get('/getAllBranches', async (req, res) => {
 router.post('/getBranchesByPincode', async ( req, res) => {
 
     const pincode = req.body.pincode;
+    console.log(pincode)
+    console.log(typeof(pincode));
+    let pincodee;
+    if(typeof(pincode) !== String){
+        pincodee = pincode.toString()
+    }
+    else{
+        pincodee = pincode;
+    }
+    console.log(pincodee)
+    console.log(typeof(pincodee));
+    // const pincodee = parseInt(pincode);
+    // console.log(typeof(pincodee));
+    // console.log(pincodee);
+    
+    // pincode = pincode.toString();
+    // console.log(pincode)
     
     try {
-        const branches =await Branch.find({pincodeCovered : pincode})
+        const branches =await Branch.find({pincodeCovered : pincodee})
+        console.log(branches);
         res.send(branches)
     } catch (error) {
         return res.status(400).json({ message: error });
