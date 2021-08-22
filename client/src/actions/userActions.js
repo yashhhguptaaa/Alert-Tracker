@@ -7,6 +7,7 @@ export const registerUser = (user) => async dispatch => {
         const response = await axios.post("/api/users/register" ,user);
         console.log(response);
         dispatch({type: 'USER_REGISTER_SUCCESS'});
+        window.location.href='/login';
     } catch (error) {
         dispatch({type: 'USER_REGISTER_FAILED',payload:error})
     }
@@ -30,10 +31,11 @@ export const loginUser = (user) => async (dispatch,getdata) => {
     }
 }
 
-// export const logoutUser = () => dispatch =>{
-//     localStorage.removeItem('currentUser');
-//     window.location.href='/login'
-// }
+export const logoutUser = () => dispatch =>{
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('currentEnquiry');
+    window.location.href='/login'
+}
 
 // export const getAllUsers = () =>async dispatch => {
 

@@ -35,8 +35,9 @@ router.post('/newenquiry', async (req, res) => {
 
 router.post('/getenquirybypin', async ( req, res) => {
 
-    const {pincodes} = req.body;
+    const pincodes = req.body.pincode;
     console.log(pincodes);
+    console.log(typeof(pincodes));
     try {
         // const enquires = await pincodes.map(pincode => {
         //      const enquiry =  Enquiry.find({pincode : pincode})
@@ -47,6 +48,18 @@ router.post('/getenquirybypin', async ( req, res) => {
         res.send(enquires)
     } catch (error) {
         return res.status(400).json({ message: error });
+    }
+})
+
+router.post('/seenEnquiry', async(req,res) => {
+    const enquiryid = req.body.enquiryid
+    try {
+        const enquiry =await Enquiry.findOne({ _id : enquiryid})
+        enquiry.bInchargeSeen = true
+        await enquiry.save()
+        res.send("Enquiry seen By Branch Incharge")
+    } catch (error) {
+        return res.send(400).json({message : 'Something went wrong'})
     }
 })
 

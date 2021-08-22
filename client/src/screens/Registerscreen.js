@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {useDispatch ,useSelector} from 'react-redux';
 import {registerUser} from '../actions/userActions';
-// import Loading from '../components/Loading';
-// import Success from '../components/Success';
+import Loading from '../components/Loading';
+import Success from '../components/Success';
 import Error from '../components/Error';
 
 export default function Registerscreen() {
@@ -31,8 +31,8 @@ export default function Registerscreen() {
             <div className="row justify-content-center mt-5">
                 <div className="col-md-5 mt-5 text-start shadow-lg p-3 mb-5 bg-white rounded">
 
-                    {/* {loading && <Loading />*/}
-                    {/* success && <Success success="User Registered Successfully"/> */} 
+                    {loading && <Loading />}
+                    { success && <Success success="User Registered Successfully"/> } 
                     {error && <Error error='Email Already Registered'/>} 
                     <h2 className="text-center" style={{ fontSize: '35px' }}>REGISTER</h2>
                     <div>

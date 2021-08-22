@@ -4,7 +4,10 @@ const enquirySchema = mongoose.Schema({
     email : {type : String , require},
     phone : {type: Number, require},
     address : {type: String, require},
-    pincode : {type: Number, require}
+    pincode : {type: Number, require},
+    bInchargeSeen : {type : Boolean, require , default:false},
+    adminSeen : {type : Boolean, require , default:false}
+
 } ,{
     timestamps:true    ,
 });
