@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { enquirySeenByAdmin, getEnquiryToAdmin } from '../actions/enquiryActions';
 import Loading from '../components/Loading';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -27,7 +29,20 @@ export default function BInchargescreen() {
 
     }, [])
 
-    
+    const notify = () => 
+    {
+        if(allEnquiries !== null){
+            allEnquiries.map(enquiry => {
+                if(!enquiry.adminSeen){
+                    toast(`Enquiry From ${enquiry.username}`);
+                }
+            })
+        }
+        else{
+            toast(`No Notifications`);
+        }
+        
+    }
 
     return (
         <div>
@@ -63,6 +78,8 @@ export default function BInchargescreen() {
                     })}
                 </tbody>
             </table>
+            <button onClick={notify}>Notify!</button>
+            <ToastContainer />
         </div>
     )
 }
