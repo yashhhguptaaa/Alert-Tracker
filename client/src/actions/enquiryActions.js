@@ -66,3 +66,18 @@ export const getEnquiryToAdmin = () => async (dispatch) => {
     }
 
 }
+
+export const enquirySeenByAdmin = (enquiryid) => async (dispatch) => {
+
+    try {
+        const response = await axios.post('/api/enquiries/seenEnquiryAdmin', {enquiryid})
+        console.log(response);
+
+        const response2 =await axios.get('/api/enquiries/getAllEnquiry')
+        console.log(response2);
+        dispatch({type : 'GET_ENQUIRIES_TO_ADMIN_SUCCESS',payload: response2.data}) ;
+    
+    } catch (error) {
+        console.log(error)
+    }
+}
