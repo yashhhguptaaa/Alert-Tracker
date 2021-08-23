@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-
+import { getEnquiryToAdmin } from '../actions/enquiryActions';
 import Loading from '../components/Loading';
 
 
@@ -16,11 +16,11 @@ export default function BInchargescreen() {
 
     useEffect(() => {
 
-        if (!currentUser.adminSeen) {
+        if (!currentUser.isAdmin) {
             window.location.href = '/'
         }
         else{
-            dispatch()
+            dispatch(getEnquiryToAdmin())
         }
 
     }, [])
@@ -29,7 +29,7 @@ export default function BInchargescreen() {
 
     return (
         <div>
-            <h1>Orders List</h1>
+            <h1>User's Enquiries</h1>
             {loading && (<Loading />)}
 
             <table className="table table-striped table-bordered table-responsive-sm">
