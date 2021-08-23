@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getEnquiryToAdmin } from '../actions/enquiryActions';
+import { enquirySeenByAdmin, getEnquiryToAdmin } from '../actions/enquiryActions';
 import Loading from '../components/Loading';
+
+
 
 
 export default function BInchargescreen() {
@@ -55,7 +57,7 @@ export default function BInchargescreen() {
                             <td>{enquiry.pincode}</td>
                             <td>{enquiry.createdAt.substring(0, 10)}</td>
                             <td>
-                                {enquiry.adminSeen ? (<h1>Seen</h1>) : (<button  className="btn" >Seen</button>)}
+                                {enquiry.adminSeen ? (<h1>Seen</h1>) : (<button  className="btn" onClick={() => dispatch(enquirySeenByAdmin(enquiry._id))}>Seen</button>)}
                             </td>
                         </tr>
                     })}
