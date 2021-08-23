@@ -22,8 +22,8 @@ function App() {
         <Route path="/login" exact component={Loginscreen} />
         <Route path="/registration" exact component={Registerscreen} />
         <Route path="/branches" exact component={Branchscreen} />
-        <Route path="/bincharge" exact component={BInchargescreen} />
-        <Route path="/admin" exact component={BInchargescreen} />
+        <Route path="/branchincharge" exact component={BInchargescreen} />
+        <Route path="/admin" exact component={Adminscreen} />
 
 
       </BrowserRouter>
