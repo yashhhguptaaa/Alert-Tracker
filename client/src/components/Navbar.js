@@ -20,7 +20,32 @@ export default function Navbar() {
                                     {currentUser.username}
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item" href="#" onClick={() => dispatch(logoutUser())} >Logout</a></li>
+                                    {  currentUser.isAdmin == true ? 
+                                         ( 
+                                            <div>
+                                            <li><a class="dropdown-item" href="/admin" >Admin</a></li>
+                                            <li><a class="dropdown-item" href="/branchincharge" >Branch Incharge</a></li>
+                                            <li><a class="dropdown-item" href="#" onClick={() => dispatch(logoutUser())} >Logout</a></li>
+
+                                            </div>
+
+                                         )
+                                         :
+                                         currentUser.isBranchIncharge == true ?
+                                         (
+                                             <div>
+                                            <li><a class="dropdown-item" href="/branchincharge" >Branch Incharge</a></li>
+                                            <li><a class="dropdown-item" href="#" onClick={() => dispatch(logoutUser())} >Logout</a></li>
+
+                                            </div>
+                                         )
+                                         :
+                                         (
+                                            <li><a class="dropdown-item" href="#" onClick={() => dispatch(logoutUser())} >Logout</a></li>
+
+                                         )
+                                         }
+                                         
                                 </ul>
                             </div>)
                             :
