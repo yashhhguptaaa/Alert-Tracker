@@ -2,7 +2,9 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { enquirySeenByIncharge, getEnquiriesByPincode } from '../actions/enquiryActions';
 import Loading from '../components/Loading';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { IoNotificationsSharp } from 'react-icons/io5';
 
 export default function BInchargescreen() {
 
@@ -25,7 +27,20 @@ export default function BInchargescreen() {
 
     }, [])
 
-    
+    const notify = () => 
+    {
+        if(userenquiries !== null){
+            userenquiries.map(enquiry => {
+                if(!enquiry.bInchargeSeen){
+                    toast.dark(`Enquiry From ${enquiry.username}`);
+                }
+            })
+        }
+        else{
+            toast(`No Notifications`);
+        }
+        
+    }
 
     return (
         <div>
@@ -61,6 +76,8 @@ export default function BInchargescreen() {
                     })}
                 </tbody>
             </table>
+            <button className="float-start" onClick={notify}>Notification <IoNotificationsSharp /></button>
+            <ToastContainer />
         </div>
     )
 }
