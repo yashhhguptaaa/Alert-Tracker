@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { newEnquiry } from '../actions/enquiryActions';
-import Branchscreen from './Branchscreen';
 
-// import Error from '../components/Error';
-
-// import pizzas from '../pizzasdata';
 
 
 export default function Homescreen() {
@@ -17,10 +13,7 @@ export default function Homescreen() {
 
 
     const dispatch = useDispatch();
-   
-    // useEffect(() => {
-    //     dispatch(getAllPizzas())
-    // }, [])
+
 
     const userstate = useSelector(state => state.loginUserReducer);
     const { currentUser } = userstate;
@@ -44,8 +37,6 @@ export default function Homescreen() {
 
         }
 
-        // <Branchscreen pincode={pincode} />
-        // window.location.href = '/branches';
 
     }
 
@@ -58,9 +49,6 @@ export default function Homescreen() {
 
 
                     <h2 className="text-center" style={{ fontSize: '35px' }}>Contact Details</h2>
-                    {/* {loading && <Loading />}
-                    {success && <Success success="User Login Successfully" /> */}
-                    {/* {error && <Error error='Invalid Credientals' />}  */}
                     <div>
                         <input required type="text" placeholder="email" className="form-control" value={email} onChange={(e) => { setEmail(e.target.value) }} />
                         <input required type="text" placeholder="address" className="form-control" value={address} onChange={(e) => { setAddress(e.target.value) }} />
