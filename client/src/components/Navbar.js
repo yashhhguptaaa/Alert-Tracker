@@ -4,7 +4,6 @@ import { logoutUser } from '../actions/userActions';
 
 export default function Navbar() {
 
-    // const cartstate = useSelector(state => state.cartReducer);
     const userstate = useSelector(state => state.loginUserReducer);
     const { currentUser } = userstate;
     const dispatch = useDispatch()
