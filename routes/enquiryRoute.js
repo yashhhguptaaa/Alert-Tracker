@@ -63,35 +63,19 @@ router.post('/seenEnquiry', async(req,res) => {
     }
 })
 
-// router.put('/editpizza', async ( req, res) => {
+router.post('/seenEnquiryAdmin', async(req,res) => {
+    const enquiryid = req.body.enquiryid
+    try {
+        const enquiry =await Enquiry.findOne({ _id : enquiryid})
+        enquiry.adminSeen = true
+        await enquiry.save()
+        res.send("Enquiry seen By Admin")
+    } catch (error) {
+        return res.send(400).json({message : 'Something went wrong'})
+    }
+})
 
-//     const editedpizza = req.body.editedpizza;
-//     try {
-//         const pizza =await Pizza.findOne({_id : editedpizza._id})
 
-//         pizza.name = editedpizza.name
-//         pizza.description = editedpizza.description
-//         pizza.category = editedpizza.category
-//         pizza.image = editedpizza.image
-//         pizza.prices = [editedpizza.prices]
 
-//         await pizza.save();
-
-//         res.send('Pizza Details Edited Successfully')
-
-//     } catch (error) {
-//         return res.status(400).json({ message: error });
-//     }
-// })
-
-// router.post('/deletepizza', async (req,res) => {
-//     const pizzaid = req.body.pizzaid;
-//     try {
-//         await Pizza.findOneAndDelete({_id : pizzaid})
-//         res.send('Pizza Deleted Successfully')
-//     } catch (error) {
-//         return res.status(400).json({ message: error });
-//     }
-// })
 
 module.exports = router;
