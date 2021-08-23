@@ -44,15 +44,6 @@ export default function Homescreen() {
 
         }
 
-        const enquiry = {
-            email,
-            phone,
-            address,
-            pincode,
-            currentUser
-        }
-        console.log(enquiry);
-        dispatch(newEnquiry(enquiry));
         // <Branchscreen pincode={pincode} />
         // window.location.href = '/branches';
 
