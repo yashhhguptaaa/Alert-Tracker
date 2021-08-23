@@ -4,6 +4,8 @@ import { enquirySeenByAdmin, getEnquiryToAdmin } from '../actions/enquiryActions
 import Loading from '../components/Loading';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { IoNotificationsSharp } from 'react-icons/io5';
+
 
 
 
@@ -34,7 +36,7 @@ export default function BInchargescreen() {
         if(allEnquiries !== null){
             allEnquiries.map(enquiry => {
                 if(!enquiry.adminSeen){
-                    toast(`Enquiry From ${enquiry.username}`);
+                    toast.dark(`Enquiry From ${enquiry.username}`);
                 }
             })
         }
@@ -47,6 +49,7 @@ export default function BInchargescreen() {
     return (
         <div>
             <h1>User's Enquiries</h1>
+            
             {loading && (<Loading />)}
 
             <table className="table table-striped table-bordered table-responsive-sm">
@@ -78,7 +81,7 @@ export default function BInchargescreen() {
                     })}
                 </tbody>
             </table>
-            <button onClick={notify}>Notify!</button>
+            <button className="float-start" onClick={notify}>Notification <IoNotificationsSharp /></button>
             <ToastContainer />
         </div>
     )
